@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent familyIntent = new Intent(MainActivity.this, FamilyActivity.class);
+                familyIntent.putExtra("background_color", R.color.category_family);
                 startActivity(familyIntent);
             }
         });

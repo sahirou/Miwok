@@ -9,6 +9,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.core.content.ContextCompat;
+
 import java.util.ArrayList;
 
 /*
@@ -17,6 +19,7 @@ import java.util.ArrayList;
  * */
 public class WordAdapter extends ArrayAdapter<Word> {
 
+    int mColorResourceId;
 
     /**
      * This is our own custom constructor (it doesn't mirror a superclass constructor).
@@ -26,12 +29,13 @@ public class WordAdapter extends ArrayAdapter<Word> {
      * @param context The current context. Used to inflate the layout file.
      * @param words   A List of Word objects to display in a list
      */
-    public WordAdapter(Activity context, ArrayList<Word> words) {
+    public WordAdapter(Activity context, ArrayList<Word> words, int colorResourceId) {
         // Here, we initialize the ArrayAdapter's internal storage for the context and the list.
         // the second argument is used when the ArrayAdapter is populating a single TextView.
         // Because this is a custom adapter for two TextViews , the adapter is not
         // going to use this second argument, so it can be any value. Here, we used 0.
         super(context, 0, words);
+        mColorResourceId = colorResourceId;
     }
 
 
@@ -63,7 +67,17 @@ public class WordAdapter extends ArrayAdapter<Word> {
         ImageView iconView = (ImageView) listItemView.findViewById(R.id.image);
         //Get the image resource ID from the current AndroidFlavor object and
         // set the image to iconView
-        iconView.setImageResource(currentWord.getImageRessourceID());
+        if (currentWord.hasImage()) {
+            iconView.setImageResource(currentWord.getImageResourceID());
+            iconView.setVisibility(View.VISIBLE);
+        } else {
+            iconView.setVisibility(View.GONE);
+        }
+
+        // Text container background
+        View textContainer = listItemView.findViewById(R.id.text_container);
+        int color = ContextCompat.getColor(getContext(), mColorResourceId);
+        textContainer.setBackgroundColor(color);
 
         // Return the whole list item layout (containing 2 TextViews)
         // so that it can be shown in the ListView

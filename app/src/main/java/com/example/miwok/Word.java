@@ -7,6 +7,8 @@ package com.example.miwok;
  */
 public class Word {
 
+    final int NO_IMAGE_PROVIDED = -1;
+
     /**
      * Default translation for the word
      */
@@ -20,7 +22,10 @@ public class Word {
     /**
      * Image ressource ID
      */
-    private int mImageRessourceID;
+    private int mImageResourceID = NO_IMAGE_PROVIDED;
+
+
+
 
 
     /**
@@ -28,12 +33,12 @@ public class Word {
      *
      * @param defaultTranslation is the word in the language user is familiar with, English for example
      * @param miwokTranslation   is the word translation in Miwok language
-     * @param imageRessourceID   is the icon image ressource ID
+     * @param imageResourceID   is the icon image ressource ID
      */
-    public Word(String defaultTranslation, String miwokTranslation, int imageRessourceID) {
+    public Word(String defaultTranslation, String miwokTranslation, int imageResourceID) {
         mDefaultTranslation = defaultTranslation;
         mMiwokTranslation = miwokTranslation;
-        mImageRessourceID = imageRessourceID;
+        mImageResourceID = imageResourceID;
     }
 
     /**
@@ -66,8 +71,14 @@ public class Word {
     /**
      * Get the image ressource ID.
      */
-    public int getImageRessourceID() {
-        return mImageRessourceID;
+    public int getImageResourceID() {
+        return mImageResourceID;
     }
 
+    /**
+     * Returns whether or not the word has an image
+     */
+    public boolean hasImage() {
+        return mImageResourceID != NO_IMAGE_PROVIDED;
+    }
 }

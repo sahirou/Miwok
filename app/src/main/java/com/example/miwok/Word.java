@@ -17,6 +17,24 @@ public class Word {
      */
     private String mMiwokTranslation;
 
+    /**
+     * Image ressource ID
+     */
+    private int mImageRessourceID;
+
+
+    /**
+     * Create a new word object
+     *
+     * @param defaultTranslation is the word in the language user is familiar with, English for example
+     * @param miwokTranslation   is the word translation in Miwok language
+     * @param imageRessourceID   is the icon image ressource ID
+     */
+    public Word(String defaultTranslation, String miwokTranslation, int imageRessourceID) {
+        mDefaultTranslation = defaultTranslation;
+        mMiwokTranslation = miwokTranslation;
+        mImageRessourceID = imageRessourceID;
+    }
 
     /**
      * Create a new word object
@@ -28,6 +46,7 @@ public class Word {
         mDefaultTranslation = defaultTranslation;
         mMiwokTranslation = miwokTranslation;
     }
+
 
     /**
      * Get the default translation of the word.
@@ -41,6 +60,14 @@ public class Word {
      */
     public String getMiwokTranslation() {
         return mMiwokTranslation;
+    }
+
+
+    /**
+     * Get the image ressource ID.
+     */
+    public int getImageRessourceID() {
+        return mImageRessourceID;
     }
 
 }

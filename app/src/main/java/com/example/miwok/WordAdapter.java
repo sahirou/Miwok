@@ -79,6 +79,12 @@ public class WordAdapter extends ArrayAdapter<Word> {
         int color = ContextCompat.getColor(getContext(), mColorResourceId);
         textContainer.setBackgroundColor(color);
 
+        // Play button
+        ImageView playButton = (ImageView) listItemView.findViewById(R.id.play_button);
+        playButton.setImageResource(currentWord.getAudioResourceID());
+        playButton.setVisibility(View.VISIBLE);
+
+
         // Return the whole list item layout (containing 2 TextViews)
         // so that it can be shown in the ListView
         return listItemView;

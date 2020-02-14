@@ -24,6 +24,11 @@ public class Word {
      */
     private int mImageResourceID = NO_IMAGE_PROVIDED;
 
+    /**
+     * Audio ressource ID
+     */
+    private int mAudioResourceID;
+
 
 
 
@@ -34,11 +39,13 @@ public class Word {
      * @param defaultTranslation is the word in the language user is familiar with, English for example
      * @param miwokTranslation   is the word translation in Miwok language
      * @param imageResourceID   is the icon image ressource ID
+     * @param audioResourceID    is the audio resource id
      */
-    public Word(String defaultTranslation, String miwokTranslation, int imageResourceID) {
+    public Word(String defaultTranslation, String miwokTranslation, int imageResourceID, int audioResourceID) {
         mDefaultTranslation = defaultTranslation;
         mMiwokTranslation = miwokTranslation;
         mImageResourceID = imageResourceID;
+        mAudioResourceID = audioResourceID;
     }
 
     /**
@@ -46,10 +53,12 @@ public class Word {
      *
      * @param defaultTranslation is the word in the language user is familiar with, English for example
      * @param miwokTranslation   is the word translation in Miwok language
+     * @param audioResourceID    is the audio resource id
      */
-    public Word(String defaultTranslation, String miwokTranslation) {
+    public Word(String defaultTranslation, String miwokTranslation, int audioResourceID) {
         mDefaultTranslation = defaultTranslation;
         mMiwokTranslation = miwokTranslation;
+        mAudioResourceID = audioResourceID;
     }
 
 
@@ -80,5 +89,24 @@ public class Word {
      */
     public boolean hasImage() {
         return mImageResourceID != NO_IMAGE_PROVIDED;
+    }
+
+    /**
+     * Get the audio ressource ID.
+     */
+    public int getAudioResourceID() {
+        return mAudioResourceID;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Word{" +
+                "NO_IMAGE_PROVIDED=" + NO_IMAGE_PROVIDED +
+                ", mDefaultTranslation='" + mDefaultTranslation + '\'' +
+                ", mMiwokTranslation='" + mMiwokTranslation + '\'' +
+                ", mImageResourceID=" + mImageResourceID +
+                ", mAudioResourceID=" + mAudioResourceID +
+                '}';
     }
 }
